@@ -11,8 +11,8 @@ import java.util.ListIterator;
  */
 public class TLinkedList<T> implements List<T> {
 
-    private int size = 0;
-    Node head = null;
+    private int size = 0; // cash 
+    Node head = null;     
 
     @Override
     public int size() {
@@ -27,7 +27,7 @@ public class TLinkedList<T> implements List<T> {
     @Override
     public boolean contains(Object o) {
         for (Object n : this) {
-            if (isNodeData(n, o)) {
+            if (isEqWithNulls(n, o)) {
                 return true;
             }
         }
@@ -76,7 +76,7 @@ public class TLinkedList<T> implements List<T> {
         Node parent = null;
         while (n != null) {
 
-            if (isNodeData(n.getData(), o)) {
+            if (isEqWithNulls(n.getData(), o)) {
 
                 if (parent == null) {
                     head = n.getNode();
@@ -158,7 +158,7 @@ public class TLinkedList<T> implements List<T> {
 
         int index = 0;
         for (Object d : this) {
-            if (isNodeData(d, o)) {
+            if (isEqWithNulls(d, o)) {
                 return index;
             }
             index++;
@@ -186,6 +186,7 @@ public class TLinkedList<T> implements List<T> {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
+    // last Node
     private Node getTail() {
         if (head == null) {
             return null;
@@ -198,12 +199,13 @@ public class TLinkedList<T> implements List<T> {
         return n;
     }
 
-    private boolean isNodeData(Object nData, Object o) {
-        return (((o == null) && (nData == null)) || ((nData != null) && (nData.equals(o))));
+    // Эквивалентность или оба null
+    private boolean isEqWithNulls(Object a, Object b) {
+        return (((b == null) && (a == null)) || ((a != null) && (a.equals(b))));
     }
-
 }
 
+// Дерево для хранения данных
 class Node<T> {
 
     private Node node;
@@ -229,15 +231,12 @@ class Node<T> {
     public void setNode(Node node) {
         this.node = node;
     }
-
 }
 
+// итератор по списку
 class NodeIterator<T> implements Iterator<T> {
-
     private Node<T> head;
-
-    ;
-
+    
     public NodeIterator(Node head) {
         this.head = head;
     }
@@ -254,3 +253,7 @@ class NodeIterator<T> implements Iterator<T> {
         return tmp.getData();
     }
 }
+
+    
+
+

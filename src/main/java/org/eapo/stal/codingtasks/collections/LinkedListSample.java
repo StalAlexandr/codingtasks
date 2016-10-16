@@ -11,7 +11,7 @@ import java.util.List;
 
 class A {};
 
-public class LinkedList {
+public class LinkedListSample {
 
     public static void main(String... args){
     
