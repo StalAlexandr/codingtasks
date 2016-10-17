@@ -102,25 +102,34 @@ public class RepeatChecker {
 
         int step = 0;
 
-        int j = 0;
+        if (maxStr.length() == minStr.length()){
         for (int i = 0; i < minStr.length(); i++) {
-            if (maxStr.charAt(i) != minStr.charAt(j)) {
+            if (minStr.charAt(i) != maxStr.charAt(i)) {
                 step++;
-                j++;
             }
-            j++;
             if (step > 1) {
-                System.out.println("a");
                 return false;
             }
         }
-        System.out.println("i" + minStr.length());
-        System.out.println("j" + j);
-        
-        if ((j - minStr.length()>1)) {
-            return false;
+        }else{
+        int j=0;
+       
+           for (int i = 0; i < minStr.length(); i++) {
+            if (minStr.charAt(i) != maxStr.charAt(j)) {
+                step++; j++;
+            }
+            if (step > 1) {
+                return false;
+            }
+            j++;
         }
-
+        
+        
+        } 
+        
+        
+        
+        
         return true;
     }
 }
