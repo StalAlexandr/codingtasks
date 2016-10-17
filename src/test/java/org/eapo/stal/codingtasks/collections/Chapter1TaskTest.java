@@ -16,25 +16,25 @@ import static org.junit.Assert.*;
  *
  * @author ASUS
  */
-public class RepeatCheckerTest {
+public class Chapter1TaskTest {
 
     @Test
     public void checkTest() {
-        RepeatChecker rc = new RepeatChecker();
+        Chapter1Tasks rc = new Chapter1Tasks();
         assertFalse(rc.checkString("asdfgh"));
         assertTrue(rc.checkString("asdafgh"));
     }
 
     @Test
     public void checkWOBufferTest() {
-        RepeatChecker rc = new RepeatChecker();
+        Chapter1Tasks rc = new Chapter1Tasks();
         assertFalse(rc.checkStringWOBuffer("asdfgh"));
         assertTrue(rc.checkStringWOBuffer("asdafgh"));
     }
 
     @Test
     public void checkRecombinarionTest() {
-        RepeatChecker rc = new RepeatChecker();
+        Chapter1Tasks rc = new Chapter1Tasks();
         assertFalse(rc.isRecombination("asdfgh", "assdff"));
         assertFalse(rc.isRecombination("asdfgh", "asdasd"));
         assertTrue(rc.isRecombination("asdfgh", "fghasd"));
@@ -43,7 +43,7 @@ public class RepeatCheckerTest {
 
     @Test
     public void spaceRemoverTest() {
-        RepeatChecker rc = new RepeatChecker();
+        Chapter1Tasks rc = new Chapter1Tasks();
         assertTrue(rc.spaceRemover("asd dfg").equals("asd%20dfg"));
         assertTrue(rc.spaceRemover("asddfg ").equals("asddfg%20"));
         assertTrue(rc.spaceRemover(" asddfg ").equals("%20asddfg%20"));
@@ -52,7 +52,7 @@ public class RepeatCheckerTest {
 
     @Test
     public void isOneStepTest() {
-        RepeatChecker rc = new RepeatChecker();
+        Chapter1Tasks rc = new Chapter1Tasks();
 
         assertTrue(rc.isOneStep("a", "a"));
         assertTrue(rc.isOneStep("a", "b"));
@@ -65,4 +65,28 @@ public class RepeatCheckerTest {
 
     }
 
+    @Test
+    public void isPalTest() {
+        Chapter1Tasks rc = new Chapter1Tasks();
+        assertTrue(rc.isPalyndromeRepl("AAA"));
+        assertTrue(rc.isPalyndromeRepl("B"));
+        assertTrue(rc.isPalyndromeRepl("AB AB ")); 
+        assertTrue(rc.isPalyndromeRepl("ABC AB ")); 
+        assertFalse(rc.isPalyndromeRepl("ABC ABD ")); 
+
+    }
+
+      @Test
+    public void zipperTest() {
+    Chapter1Tasks rc = new Chapter1Tasks();
+    assertTrue(rc.zipper("A").equals("A"));
+    assertTrue(rc.zipper("AA").equals("A2"));
+    assertTrue(rc.zipper("ABBBCDDDDDE").equals("AB3CD4E"));
+    
+    
+    
+    
+    
+      
+    }
 }
