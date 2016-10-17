@@ -252,6 +252,11 @@ class NodeIterator<T> implements Iterator<T> {
         head = head.getNode();
         return tmp.getData();
     }
+
+    @Override
+    public void remove() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 }
 
     

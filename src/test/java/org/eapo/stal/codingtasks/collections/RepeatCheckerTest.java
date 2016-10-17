@@ -52,5 +52,16 @@ public class RepeatCheckerTest {
          
          
      }
+        @Test
+     public void isOneStepTest() {
+      RepeatChecker rc = new RepeatChecker();
+  
+         assertTrue(rc.isOneStep("a", "a"));
+     assertTrue(rc.isOneStep("a", "b"));
+     assertTrue(rc.isOneStep("ab", "b"));     
+    assertFalse(rc.isOneStep("abc", "cba"));     
+     assertFalse(rc.isOneStep("abc", "cba"));     
+     
+     }
      
 }
