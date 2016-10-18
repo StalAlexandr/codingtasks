@@ -11,6 +11,9 @@ import java.util.ListIterator;
  */
 public class TLinkedList<T> implements List<T> {
 
+    
+    public Node getHead(){return head;};
+    
     private int size = 0; // cash 
     Node head = null;     
 

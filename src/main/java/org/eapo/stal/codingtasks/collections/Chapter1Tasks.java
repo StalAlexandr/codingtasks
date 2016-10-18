@@ -1,6 +1,8 @@
 package org.eapo.stal.codingtasks.collections;
 
 import java.util.HashMap;
+import java.util.LinkedList;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -180,7 +182,7 @@ public class Chapter1Tasks {
         int replCount = 1;
 
         while (i < str.length()) {
-           
+
             replCount++;
             if ((currentChar != str.charAt(i)) || (i == str.length() - 1)) {
                 sb.append(currentChar);
@@ -193,5 +195,42 @@ public class Chapter1Tasks {
         return sb.length() < str.length() ? sb.toString() : str;
     }
 
-    
+    boolean isListPolynome(TLinkedList list) {
+        Node node = list.getHead();
+        int length = list.size();
+
+        return recPolynom(node, length).result;
+    }
+
+    private Result recPolynom(Node node, int length) {
+  
+        if (length == 0) {
+            return new Result(node, true);
+        }
+        if (length == 1) {
+            return new Result(node.getNode(), true);
+        }
+
+        Result res = recPolynom(node.getNode(), length - 2);
+        if (res.result == false) {
+            return res;
+        }
+
+        if (!res.node.getData().equals(node.getData())) {
+            return new Result(node, false);
+        }
+        return new Result(res.node.getNode(), true);
+    }
+
+    class Result {
+
+        Node node;
+        boolean result;
+
+        public Result(Node node, boolean result) {
+            this.node = node;
+            this.result = result;
+        }
+
+    }
 }
