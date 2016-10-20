@@ -80,8 +80,11 @@ public class Chapter1TaskTest {
     public void zipperTest() {
     Chapter1Tasks rc = new Chapter1Tasks();
     assertTrue(rc.zipper("A").equals("A"));
-    assertTrue(rc.zipper("AA").equals("A2"));
-    assertTrue(rc.zipper("ABBBCDDDDDE").equals("AB3CD4E"));
+    assertTrue(rc.zipper("AA").equals("AA"));
+    assertTrue(rc.zipper("AAA").equals("A3"));
+      assertTrue(rc.zipper("AAAB").equals("A3B"));
+    assertTrue(rc.zipper("ABBBCDDDDD").equals("AB3CD5"));
+    assertTrue(rc.zipper("ABBBCDDDDDE").equals("AB3CD5E"));
     
     
     

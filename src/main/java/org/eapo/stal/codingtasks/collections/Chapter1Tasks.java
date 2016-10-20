@@ -173,26 +173,39 @@ public class Chapter1Tasks {
 
     public String zipper(String str) {
         StringBuilder sb = new StringBuilder();
-        if (str.length() == 0) {
-            return "";
+        if (str.isEmpty()) {
+            return str;
         }
 
         int i = 0;
         char currentChar = str.charAt(i);
-        int replCount = 1;
-
+        int replCount = 0;
         while (i < str.length()) {
 
-            replCount++;
-            if ((currentChar != str.charAt(i)) || (i == str.length() - 1)) {
+            //     replCount++;
+            if (currentChar != str.charAt(i)) {
                 sb.append(currentChar);
                 if (replCount > 1) {
                     sb.append(replCount);
+                    replCount = 1;
                 }
+                currentChar = str.charAt(i);
+            } else {
+                replCount++; 
             }
             i++;
         }
+
+        if (replCount > 0) {
+            sb.append(currentChar);
+
+            if (replCount > 1) {
+                sb.append(replCount);
+            }
+        }
+
         return sb.length() < str.length() ? sb.toString() : str;
+
     }
 
     boolean isListPolynome(TLinkedList list) {
@@ -203,7 +216,7 @@ public class Chapter1Tasks {
     }
 
     private Result recPolynom(Node node, int length) {
-  
+
         if (length == 0) {
             return new Result(node, true);
         }
