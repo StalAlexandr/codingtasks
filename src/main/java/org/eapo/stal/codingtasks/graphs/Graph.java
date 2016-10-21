@@ -61,7 +61,7 @@ public class Graph {
         return name;
     }
 
-    public static boolean isLink(Graph a, Graph b) {
+    public static boolean isLinkWidth(Graph a, Graph b) {
         Queue<Graph> list = new LinkedList<>();
         list.add(a);
 
@@ -80,6 +80,25 @@ public class Graph {
         return false;
     }
 
+    public static boolean isLinkHeight(Graph a, Graph b, Set visited) {
+       
+        if (visited.contains(a))
+            return false;
+
+       visited.add(a);
+        
+        if (a.equals(b))
+            return true;
+        
+        for (Graph g: a.getChilds()){
+            if (isLinkHeight(g,b,visited))
+                return true;    
+        }
+        return false;
+    }
+
+    
+    
     public static void main(String[] args) {
 
         Graph a = new Graph("a");
@@ -99,7 +118,14 @@ public class Graph {
         
         d.getChilds().add(e);
         e.getChilds().add(g);
+  
+        System.out.println(isLinkWidth(a, h));    
+        System.out.println(isLinkHeight(a, h, new HashSet()));
+
         e.getChilds().add(h);
+
+        System.out.println(isLinkWidth(a, h));    
+        System.out.println(isLinkHeight(a, h, new HashSet()));
 
 
     }
